@@ -52,10 +52,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(groupArray!)
         
         if  !isAccordRule(text: allPriceTF.text, message: "总价没填 或者为0") ||
-            !isAccordRule(text: distributionCostTF.text, message: "其他费用没填 或者为0") ||
             !isAccordRule(text: discountTF.text, message: "优惠没填 或者为0") ||
             !isAccordRule(text: payPriceTF.text, message: "支付费用没填 或者为0")
         {
+            return
+        }
+        
+        if distributionCostTF.text == nil || distributionCostTF.text!.characters.count == 0 {
+            showAlert(message: "其他费用没填")
             return
         }
         
